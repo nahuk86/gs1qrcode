@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetch GS1 QR Code</title>
+</head>
+<body>
+  <div id="qrcode"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
+  <script>
+    fetch('YOUR_URL_TO_FETCH_GS1_QR_CODE')
+      .then(response => response.text())
+      .then(data => {
+        var qr = new QRCode(document.getElementById('qrcode'), {
+          text: data,
+          width: 128,
+          height: 128,
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
