@@ -4,20 +4,25 @@
   <title>Fetch GS1 QR Code</title>
 </head>
 <body>
+  <input type="text" id="urlInput" placeholder="Enter URL">
+  <button onclick="fetchAndGenerateQRCode()">Generate QR Code</button>
   <div id="qrcode"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
   <script>
-    fetch('YOUR_URL_TO_FETCH_GS1_QR_CODE')
-      .then(response => response.text())
-      .then(data => {
-        var qr = new QRCode(document.getElementById('qrcode'), {
-          text: data,
-          width: 128,
-          height: 128,
-        });
-      })
-      .catch(error => console.error('Error:', error));
+    function fetchAndGenerateQRCode() {
+      var inputUrl = document.getElementById('urlInput').value;
+      fetch(inputUrl)
+        .then(response => response.text())
+        .then(data => {
+          var qrcode = new QRCode(document.getElementById('qrcode'), {
+            text: data,
+            width: 128,
+            height: 128,
+          });
+        })
+        .catch(error => console.error('Error:', error));
+    }
   </script>
 </body>
 </html>
