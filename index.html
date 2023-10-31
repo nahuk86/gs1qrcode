@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Fetch GS1 QR Code</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de código QR GS1</title>
 </head>
 <body>
-  <input type="text" id="urlInput" placeholder="Enter URL">
-  <button onclick="fetchAndGenerateQRCode()">Generate QR Code</button>
-  <div id="qrcode"></div>
+    <input type="text" id="linkInput" placeholder="Ingrese su URL aquí">
+    <button onclick="generarCodigoQR()">Generar Código QR GS1</button>
+    <div id="barcode"></div>
 
-  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-  <script>
-    function fetchAndGenerateQRCode() {
-      var inputUrl = document.getElementById('urlInput').value;
-      fetch(inputUrl)
-        .then(response => response.text())
-        .then(data => {
-          var qrcode = new QRCode(document.getElementById('qrcode'), {
-            text: data,
-            width: 128,
-            height: 128,
-          });
-        })
-        .catch(error => console.error('Error:', error));
-    }
-  </script>
+    <!-- Agrega la librería JsBarcode para generar el código QR GS1 -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+
+    <!-- Agrega tu script personalizado -->
+    <script src="script.js"></script>
 </body>
 </html>
