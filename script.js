@@ -1,12 +1,11 @@
 function generarCodigoQR() {
     var url = document.getElementById('linkInput').value;
     if (url !== '') {
-        JsBarcode("#barcode", url, {
-            format: "CODE128",
-            displayValue: true,
-            lineColor: "#000",
-            width: 2,
-            height: 40,
+        var qr = new QRCode(document.getElementById('qrcode'), {
+            text: url,
+            width: 128,
+            height: 128,
+            correctLevel: QRCode.CorrectLevel.H
         });
     } else {
         alert('Por favor ingrese una URL válida.');
