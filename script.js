@@ -4,8 +4,7 @@ function generarCodigoQR() {
         var qr = new QRCode(document.getElementById('qrcode'), {
             text: url,
             width: 128,
-            height: 128,
-            correctLevel: QRCode.CorrectLevel.H
+            height: 128
         });
     } else {
         alert('Por favor ingrese una URL válida.');
